@@ -49,6 +49,7 @@ global registry name.
 - [CI and delivery](#delivery)
 - [Documents and reporting](#documents)
 - [Content and growth](#marketing)
+- [Product marketing and community](#community)
 - [Knowledge management and productivity](#knowledge)
 - [Agent context and orchestration](#orchestration)
 - [Skill authoring and library maintenance](#meta)
@@ -69,6 +70,7 @@ that already have sufficient inputs.
 | Bug investigation | `systematic-debugging` → fix and regression checks → `verification-before-completion` |
 | Frontend work | `frontend-design` → `frontend-ui-engineering` → `webapp-testing` → `web-design-guidelines` |
 | Weekly report | Progress evidence → `weekly-report-writing` → document format if needed |
+| Product update post | Product facts and recent reviews → `product-community-content` → user approval before publishing |
 
 <a id="research"></a>
 ### Research and data analysis
@@ -213,6 +215,16 @@ Plan content, write copy, then investigate search visibility as needed.
 | [copywriting](https://github.com/coreyhaines31/marketingskills/tree/main/skills/copywriting) | coreyhaines31/marketingskills | Write product copy around user goals. |
 | [seo-audit](https://github.com/coreyhaines31/marketingskills/tree/main/skills/seo-audit) | coreyhaines31/marketingskills | Diagnose SEO and indexing problems. |
 
+<a id="community"></a>
+### Product marketing and community
+
+Turn product evidence and recent user feedback into platform-native drafts.
+Check each platform's rules and obtain authorization before publishing.
+
+| Skill | Source | Purpose |
+| --- | --- | --- |
+| [product-community-content](skills/product-community-content/SKILL.md) | This repository | Turn a product's repository, listing and recent user reviews into X, Xiaohongshu and Reddit drafts with prepared images. |
+
 <a id="knowledge"></a>
 ### Knowledge management and productivity
 
@@ -268,6 +280,11 @@ skills/
     SKILL.md
     assets/
     references/
+  product-community-content/
+    SKILL.md
+    assets/
+    references/
+    scripts/
   value-investing-thesis/
     SKILL.md
     assets/

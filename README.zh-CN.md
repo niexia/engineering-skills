@@ -47,6 +47,7 @@ codex plugin add engineering-skills@workbench
 - [CI 与交付](#delivery)
 - [文档与汇报](#documents)
 - [内容与增长](#marketing)
+- [产品营销与社区](#community)
 - [知识管理与个人效率](#knowledge)
 - [Agent 上下文与执行编排](#orchestration)
 - [技能创作与库维护](#meta)
@@ -65,6 +66,7 @@ codex plugin add engineering-skills@workbench
 | 故障排查 | `systematic-debugging` → 修复与回归检查 → `verification-before-completion` |
 | 前端开发 | `frontend-design` → `frontend-ui-engineering` → `webapp-testing` → `web-design-guidelines` |
 | 周报 | 进展证据 → `weekly-report-writing` → 按需选择文档格式 |
+| 产品更新发帖 | 产品证据与最新评价 → `product-community-content` → 人工确认后再发布 |
 
 <a id="research"></a>
 ### 研究与数据分析
@@ -206,6 +208,16 @@ codex plugin add engineering-skills@workbench
 | [copywriting](https://github.com/coreyhaines31/marketingskills/tree/main/skills/copywriting) | coreyhaines31/marketingskills | 围绕用户目标编写产品文案。 |
 | [seo-audit](https://github.com/coreyhaines31/marketingskills/tree/main/skills/seo-audit) | coreyhaines31/marketingskills | 诊断 SEO 与索引问题。 |
 
+<a id="community"></a>
+### 产品营销与社区
+
+把产品证据与最新用户反馈转化为各平台原生草稿。
+发布前逐平台确认规则并获得授权。
+
+| 技能 | 来源 | 用途 |
+| --- | --- | --- |
+| [product-community-content](skills/product-community-content/SKILL.md) | 本仓库 | 基于产品仓库、商店页面与最新用户评价，生成 X、小红书、Reddit 草稿与配图。 |
+
 <a id="knowledge"></a>
 ### 知识管理与个人效率
 
@@ -260,6 +272,11 @@ skills/
     SKILL.md
     assets/
     references/
+  product-community-content/
+    SKILL.md
+    assets/
+    references/
+    scripts/
   value-investing-thesis/
     SKILL.md
     assets/
