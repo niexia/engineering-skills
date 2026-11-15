@@ -2,3 +2,5 @@
 .claude/skills/
 .agents/skills/
 .ruff_cache/
+__pycache__/
+*.pyc

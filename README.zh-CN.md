@@ -45,6 +45,7 @@
 | --- | --- | --- |
 | [last30days](https://github.com/mvanhorn/last30days-skill/tree/main/skills/last30days) | mvanhorn/last30days-skill | 跨平台研究最近 30 天的讨论。 |
 | [literature-review](https://github.com/K-Dense-AI/scientific-agent-skills/tree/main/skills/literature-review) | K-Dense-AI/scientific-agent-skills | 检索与整理学术文献。 |
+| [value-investing-thesis](skills/value-investing-thesis/SKILL.md) | This repository | 用巴菲特、段永平、芒格框架构建长期投资论点，并生成总结卡片图片。 |
 
 <a id="product"></a>
 ### 目标与需求澄清
@@ -226,6 +227,11 @@ skills/
     SKILL.md
     assets/
     references/
+  value-investing-thesis/
+    SKILL.md
+    assets/
+    references/
+    scripts/
   maintain-skill-library/
     SKILL.md
     references/

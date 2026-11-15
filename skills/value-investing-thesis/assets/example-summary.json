@@ -1,0 +1,55 @@
+{
+  "company": "Example Consumer Co",
+  "ticker": "EXM",
+  "market": "HK",
+  "as_of": "2026-11-15",
+  "currency": "HKD",
+  "price": "142.1",
+  "market_cap": "189bn HKD",
+  "verdict": "WATCH",
+  "verdict_line": "Good business, fair price; wait for a better pitch or clearer evidence.",
+  "locale": "en",
+  "scores": {
+    "business": 4,
+    "moat": 3,
+    "management": 4,
+    "valuation": 3,
+    "risk": 3
+  },
+  "metrics": [
+    {"label": "P/E (2026E)", "value": "20-22x"},
+    {"label": "Dividend yield", "value": "1.8%"},
+    {"label": "Net cash", "value": "14.2bn"},
+    {"label": "Revenue growth", "value": "+23.8%"},
+    {"label": "Net margin", "value": "30.0%"},
+    {"label": "ROE (TTM)", "value": "71%"}
+  ],
+  "layers": [
+    {"label": "Stable core", "text": "Offline retail is roughly flat; membership and repeat purchase support the base."},
+    {"label": "Cyclical", "text": "Overseas retail is resetting; inventory destocking weighs on near-term growth."},
+    {"label": "Bubble", "text": "Online speculative demand has fallen sharply; resale premia are gone."}
+  ],
+  "bull": [
+    "The offline base is stable and cash-generative.",
+    "The portfolio is broader than one character.",
+    "A lower base makes next year's comparisons easier."
+  ],
+  "bear": [
+    "Normalized earnings may be well below the peak.",
+    "Overseas stores carry fixed costs and inventory risk.",
+    "A new global hit is not guaranteed."
+  ],
+  "lenses": {
+    "buffett": "Narrow moat: brand and IP matter, but switching costs are low.",
+    "duan": "Buy the business, not the character; watch culture and price.",
+    "munger": "Invert: if the fad never returns, what is the floor?"
+  },
+  "decision": {
+    "buy_zone": "110-120",
+    "watch_zone": "120-160",
+    "avoid_zone": ">200 without a new hit",
+    "position": "<=5%",
+    "expected_return": "+18% at 120"
+  },
+  "footer": "Not investment advice. Figures are illustrative."
+}
