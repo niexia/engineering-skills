@@ -10,12 +10,18 @@ Agent execution.
 | --- | --- |
 | Verdict | One of BUY, WATCH or PASS, supported by the evidence and scoring rules |
 | Facts | Material claims cite a source and date; unavailable data is marked, not invented |
+| Provenance | Load-bearing claims carry FACT / COMPANY CLAIM / ESTIMATE / MODEL / JUDGEMENT / ASSUMPTION labels |
+| Freshness | Price, filings, consensus and ownership data carry an as-of; stale data is marked |
+| Arithmetic | `check_numbers.py` returns PASS; market cap, EV, P/E, margins, FCF, per-share and scenarios reconcile |
+| Metric periods | Every card or table metric carries its period; no forward P/E mixed with a trailing margin |
 | Business model | Revenue drivers, unit economics and the stable/cyclical/bubble split are explicit |
 | Three lenses | Buffett, Duan and Munger each contribute a distinct question and evidence |
 | Normalized earnings | A bridge from reported profit to owner earnings, with adjustments labeled |
 | Valuation | Bear/base/bull cases, implied returns and a reverse-DCF cross-check |
-| Risk | A pre-mortem with ranked causes, early warnings and responses |
+| Variant perception | The note states consensus, what is priced in, and what it believes differently, or says "no edge" |
+| Risk | A pre-mortem with ranked causes, early warnings and a drawdown estimate |
 | Decision | Buy/watch/avoid zones, position size, expected return and sell rules |
+| Confidence | Overall grade A/B/C, with the key assumptions graded |
 | Image | A valid PNG or SVG exists, is readable at chat size and has no clipped text |
 | Integrity | No invented quote, number, date or management intention |
 
@@ -90,6 +96,52 @@ Expected: Write the note in Chinese, set `"locale": "zh"`, pass a CJK font if th
 default fails, and verify the image for missing-glyph boxes. The card labels are
 Chinese; values remain in the user's language.
 
+## Scenario 9: Arithmetic check failure
+
+Input: The thesis uses a market cap of 200,000 but price × diluted shares is
+189,096; EV and P/E were built on the wrong market cap.
+
+Expected: `check_numbers.py` returns FAIL and exit code 1. Recompute the market
+cap, EV, P/E, per-share values and scenario returns; re-run until PASS. If the
+inputs are unavailable, state `VACUOUS` and lower the confidence. Do not publish
+the conclusion with a failed gate.
+
+## Scenario 10: Stale price or consensus
+
+Input: The note uses a price from three weeks ago and a consensus estimate from
+before the latest guidance cut.
+
+Expected: Mark both as stale or superseded. Refresh the price to the last close and
+the consensus to a dated post-guidance figure, or drop the affected valuation
+claims. Do not present either as current.
+
+## Scenario 11: Conflicting sources
+
+Input: The annual report shows revenue of 100, a data vendor shows 102, and the
+difference is not explained.
+
+Expected: Add a conflict-register row with both values, select the filing figure,
+explain that the vendor difference may be a normalization or definition issue, and
+state what would settle it. Do not average the two.
+
+## Scenario 12: Missing debt
+
+Input: The balance sheet extract is incomplete and total debt is unknown.
+
+Expected: Do not set debt to zero. Mark net cash, EV and leverage as unavailable;
+skip the affected checks; state what filing page or note would supply the figure.
+The qualitative thesis can continue, but the valuation is incomplete.
+
+## Scenario 13: Generic, ticker-swappable thesis
+
+Input: The note's bull and bear points could apply unchanged to the company's
+closest competitor.
+
+Expected: Apply the ticker-swap test. Add company-specific evidence on customers,
+unit economics, IP or products, capital allocation and the variant perception, or
+lower the confidence and change the verdict to WATCH. Rewriting the company name
+is not enough.
+
 ## Evaluation record
 
 2026-11-15: Initial version authored. The summary-card script was run on the
@@ -100,6 +152,16 @@ score returned exit code 2. A Chinese card was rendered separately with a CJK fo
 and checked for missing glyphs. After adding price and market-cap to the header and
 moving the expected-return line, the PNG and SVG were re-rendered and the Chinese
 card was checked again.
+
+2026-11-15 accuracy upgrade: Added `references/accuracy-playbook.md`,
+`assets/report-template.md`, `scripts/check_numbers.py`, `assets/example-checks.json`
+and the `confidence` field. The checker was run on the fictional example: 12
+checks passed, `Accuracy gate: PASS`, exit code 0. A deliberately wrong market cap
+returned FAIL and exit code 1; a missing required check returned FAIL and exit code
+1; a skipped optional check returned PASS with one skip; an empty check list
+returned VACUOUS and exit code 2. The Chinese and English cards were re-rendered
+with the confidence field and checked for layout and missing glyphs. Metric labels
+now require an explicit period; a metric without a period returned exit code 2.
 
 Independent Agent behavior evaluation, the positive and negative scenarios above,
 and user acceptance remain pending. Status remains Draft. Future records should

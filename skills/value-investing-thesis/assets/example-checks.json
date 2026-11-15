@@ -1,0 +1,90 @@
+{
+  "company": "Example Consumer Co",
+  "as_of": "2026-11-15",
+  "checks": [
+    {
+      "name": "Market cap",
+      "left": 189200,
+      "right": 189096.1,
+      "unit": "HKD m",
+      "note": "price 142.1 x 1,331m diluted shares = 189,096m; used 189,200m (rounded)"
+    },
+    {
+      "name": "Net cash",
+      "left": 14164,
+      "right": 14164,
+      "unit": "HKD m",
+      "note": "cash 12,442 + deposits 1,722 - debt 0 = 14,164"
+    },
+    {
+      "name": "Enterprise value",
+      "left": 175036,
+      "right": 175036,
+      "unit": "HKD m",
+      "note": "market cap 189,200 - net cash 14,164 = 175,036; no leases, minorities or pensions"
+    },
+    {
+      "name": "P/E",
+      "left": 23.7,
+      "right": 23.683333,
+      "unit": "x",
+      "note": "price 142.1 / EPS 6.0 = 23.68"
+    },
+    {
+      "name": "Net margin",
+      "left": 0.254,
+      "right": 0.253968,
+      "unit": "ratio",
+      "note": "net profit 8,000 / revenue 31,500 = 25.4%"
+    },
+    {
+      "name": "Free cash flow",
+      "left": 6500,
+      "right": 6500,
+      "unit": "HKD m",
+      "note": "operating cash flow 8,000 - capex 1,500 = 6,500"
+    },
+    {
+      "name": "FCF yield",
+      "left": 0.0371,
+      "right": 0.037135,
+      "unit": "ratio",
+      "note": "FCF 6,500 / EV 175,036 = 3.71%"
+    },
+    {
+      "name": "Per-share value",
+      "left": 142.1,
+      "right": 142.45,
+      "unit": "HKD/share",
+      "note": "net profit 8,000 x P/E 23.7 / 1,331m shares = 142.45"
+    },
+    {
+      "name": "Scenario probabilities",
+      "left": 1.0,
+      "right": 1.0,
+      "unit": "ratio",
+      "note": "bear 0.25 + base 0.45 + bull 0.30 = 1.00"
+    },
+    {
+      "name": "Expected return",
+      "left": 0.0045,
+      "right": 0.0045,
+      "unit": "ratio",
+      "note": "0.25 x -45% + 0.45 x -4% + 0.30 x +45% = +0.45%"
+    },
+    {
+      "name": "Bull above base",
+      "left": 206,
+      "right": 136,
+      "operator": "gt",
+      "unit": "HKD/share"
+    },
+    {
+      "name": "Base above bear",
+      "left": 136,
+      "right": 77.5,
+      "operator": "gt",
+      "unit": "HKD/share"
+    }
+  ]
+}

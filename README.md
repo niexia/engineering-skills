@@ -48,7 +48,7 @@ Gather evidence before choosing a direction. Spreadsheet analysis is under
 | --- | --- | --- |
 | [last30days](https://github.com/mvanhorn/last30days-skill/tree/main/skills/last30days) | mvanhorn/last30days-skill | Research discussions from the last 30 days across platforms. |
 | [literature-review](https://github.com/K-Dense-AI/scientific-agent-skills/tree/main/skills/literature-review) | K-Dense-AI/scientific-agent-skills | Search and synthesize academic literature. |
-| [value-investing-thesis](skills/value-investing-thesis/SKILL.md) | This repository | Build a Buffett/Duan/Munger long-term thesis and a summary card image. |
+| [value-investing-thesis](skills/value-investing-thesis/SKILL.md) | This repository | Build a Buffett/Duan/Munger thesis with provenance, arithmetic checks and a summary card. |
 
 <a id="product"></a>
 ### Goals and requirements

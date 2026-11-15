@@ -9,6 +9,7 @@
   "verdict": "WATCH",
   "verdict_line": "Good business, fair price; wait for a better pitch or clearer evidence.",
   "locale": "en",
+  "confidence": "B",
   "scores": {
     "business": 4,
     "moat": 3,
@@ -17,12 +18,12 @@
     "risk": 3
   },
   "metrics": [
-    {"label": "P/E (2026E)", "value": "20-22x"},
-    {"label": "Dividend yield", "value": "1.8%"},
-    {"label": "Net cash", "value": "14.2bn"},
-    {"label": "Revenue growth", "value": "+23.8%"},
-    {"label": "Net margin", "value": "30.0%"},
-    {"label": "ROE (TTM)", "value": "71%"}
+    {"label": "P/E", "value": "20-22x", "period": "2026E"},
+    {"label": "Dividend yield", "value": "1.8%", "period": "FY25"},
+    {"label": "Net cash", "value": "14.2bn", "period": "1H26"},
+    {"label": "Revenue growth", "value": "+23.8%", "period": "1H26"},
+    {"label": "Net margin", "value": "30.0%", "period": "1H26"},
+    {"label": "ROE", "value": "71%", "period": "TTM"}
   ],
   "layers": [
     {"label": "Stable core", "text": "Offline retail is roughly flat; membership and repeat purchase support the base."},

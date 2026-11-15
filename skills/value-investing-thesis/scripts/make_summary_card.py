@@ -72,6 +72,7 @@ LABELS = {
         "position": "Position",
         "expected": "Expected return",
         "not_advice": "Not investment advice.",
+        "confidence": "Confidence",
         "verdict": {"BUY": "BUY", "WATCH": "WATCH", "PASS": "PASS"},
         "scores": {
             "business": "Business quality",
@@ -97,6 +98,7 @@ LABELS = {
         "position": "仓位",
         "expected": "预期回报",
         "not_advice": "不构成投资建议。",
+        "confidence": "信心",
         "verdict": {"BUY": "买入", "WATCH": "观察", "PASS": "回避"},
         "scores": {
             "business": "生意质量",
@@ -125,6 +127,8 @@ def validate(data: dict[str, Any]) -> None:
         require(data, key)
     if data["verdict"] not in VERDICT_COLORS:
         fail("verdict must be one of BUY, WATCH or PASS")
+    if data.get("confidence") and str(data["confidence"]).upper() not in ("A", "B", "C"):
+        fail("confidence must be A, B or C")
     scores = data["scores"]
     for key in ("business", "moat", "management", "valuation", "risk"):
         if key not in scores:
@@ -139,6 +143,11 @@ def validate(data: dict[str, Any]) -> None:
         fail("layers must contain exactly three items")
     if not 1 <= len(data["metrics"]) <= 6:
         fail("metrics must contain between one and six items")
+    for metric in data["metrics"]:
+        if not isinstance(metric, dict) or "label" not in metric or "value" not in metric:
+            fail("each metric needs a label and a value")
+        if "period" not in metric or not str(metric["period"]).strip():
+            fail(f"metric {metric.get('label')!r} needs a period (FY25, 1H26, TTM, 2026E)")
     if not 1 <= len(data["bull"]) <= 3:
         fail("bull must contain between one and three items")
     if not 1 <= len(data["bear"]) <= 3:
@@ -146,6 +155,26 @@ def validate(data: dict[str, Any]) -> None:
     for key in ("buffett", "duan", "munger"):
         if key not in data["lenses"]:
             fail(f"missing lens: {key}")
+
+
+def warn_verdict_consistency(data: dict[str, Any]) -> None:
+    scores = {key: int(value) for key, value in data["scores"].items()}
+    verdict = data["verdict"]
+    if verdict == "BUY":
+        if not (
+            scores["business"] >= 4
+            and scores["moat"] >= 3
+            and scores["management"] >= 4
+            and scores["valuation"] >= 4
+            and scores["risk"] >= 3
+        ):
+            print("warning: BUY is inconsistent with the score rules; explain the override", file=sys.stderr)
+    elif verdict == "PASS":
+        if scores["business"] > 2 and scores["moat"] > 2 and scores["management"] > 2:
+            print("warning: PASS with high scores needs a governance/accounting red flag; explain it", file=sys.stderr)
+    elif verdict == "WATCH":
+        if scores["business"] < 4:
+            print("warning: WATCH usually implies business quality >= 4; explain the override", file=sys.stderr)
 
 
 def find_font(explicit: str | None = None) -> str | None:
@@ -280,6 +309,8 @@ def draw_header(draw: Any, data: dict[str, Any], labels: dict[str, Any], fonts: 
         meta.append(price)
     if data.get("market_cap"):
         meta.append(str(data["market_cap"]))
+    if data.get("confidence"):
+        meta.append(f"{labels['confidence']} {str(data['confidence']).upper()}")
     draw.text((M, 194), "  ·  ".join(meta), font=fonts.get(24), fill=MUTED)
 
     verdict = str(data["verdict"]).upper()
@@ -343,7 +374,11 @@ def draw_metrics(draw: Any, data: dict[str, Any], labels: dict[str, Any], fonts:
         row = index // columns
         x = M + 30 + column * cell_width
         y = 804 + row * 70
-        draw.text((x, y), str(metric.get("label", "")), font=fonts.get(20), fill=MUTED)
+        label = str(metric.get("label", ""))
+        period = str(metric.get("period", "")).strip()
+        if period:
+            label = f"{label} ({period})"
+        draw.text((x, y), label, font=fonts.get(20), fill=MUTED)
         font, lines, line_height = fit_text(draw, str(metric.get("value", "")), fonts, cell_width - 20, 38, 30, 20)
         draw_lines(draw, x, y + 24, lines, font, INK, line_height)
 
@@ -545,6 +580,8 @@ def render_svg(data: dict[str, Any], labels: dict[str, Any], out_path: Path) -> 
         meta.append(f'{data["price"]} {data.get("currency", "")}'.strip())
     if data.get("market_cap"):
         meta.append(str(data["market_cap"]))
+    if data.get("confidence"):
+        meta.append(f"{labels['confidence']} {str(data['confidence']).upper()}")
     text(" · ".join(meta), 24, MUTED)
     y += 8
     text(f'{labels["verdict"][data["verdict"]]} — {data["verdict_line"]}', 30, VERDICT_COLORS[data["verdict"]], "bold")
@@ -569,7 +606,9 @@ def render_svg(data: dict[str, Any], labels: dict[str, Any], out_path: Path) -> 
 
     section(labels["metrics"])
     for metric in list(data["metrics"])[:6]:
-        text(f'{metric.get("label", "")}: {metric.get("value", "")}', 24, INK)
+        period = str(metric.get("period", "")).strip()
+        suffix = f" ({period})" if period else ""
+        text(f'{metric.get("label", "")}{suffix}: {metric.get("value", "")}', 24, INK)
     y += 8
     rule()
 
@@ -639,6 +678,7 @@ def main() -> None:
         fail("input must be a JSON object")
 
     validate(data)
+    warn_verdict_consistency(data)
     locale = str(data.get("locale", "en")).lower()
     labels = LABELS.get(locale, LABELS["en"])
 

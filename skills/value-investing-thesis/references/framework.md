@@ -161,6 +161,50 @@ Moat verdict:
   for 10 years without a quote?
 - A great business at a fair price is rare; do not dilute it with mediocre ideas.
 
+## Consensus, variant perception and what is priced in
+
+A correct description of a great company is not an investment thesis if the price
+already reflects it. State:
+
+- **Consensus**: what the market believes about growth, margins, duration and
+  risk. Use dated estimates and the current multiple.
+- **What is priced in**: the growth and margin implied by the current price
+  (reverse DCF or implied multiple).
+- **Variant perception**: what you believe differently, why the market may be
+  wrong, and what evidence supports it.
+- **What would prove you wrong**: the observation that would falsify the variant
+  perception.
+
+If you cannot state a variant perception, the correct verdict is WATCH or PASS,
+not BUY. The expected return is then beta, not alpha.
+
+**Ticker-swap test**: replace the company with its closest competitor. If the
+thesis still reads as plausible, it is generic. Add company-specific evidence or
+lower the confidence.
+
+## Stress test and drawdown
+
+The bear case is an operating scenario, not a price target.
+
+- Revenue decline and margin compression: how far, for how long?
+- Multiple compression: what multiple does the market pay in a comparable
+  downturn?
+- Estimate the drawdown from the current price, with the mechanism.
+- Identify the early warning and the response.
+- Distinguish a temporary drawdown from permanent capital loss.
+- If the thesis only works with a low-probability bull case, say so.
+
+## Confidence calibration
+
+| Grade | Meaning | Evidence standard |
+|---|---|---|
+| A | High confidence | Primary sources, arithmetic checked, key assumptions triangulated, strong bear case tested |
+| B | Medium confidence | Mostly primary sources, one or two unresolved estimates, one material uncertainty |
+| C | Low confidence | Thin data, multiple estimates, conclusion provisional; size accordingly |
+
+Grade the conclusion and the two or three assumptions that do the most work, not
+every sentence. Carry the overall grade into `summary.json`.
+
 ## Scoring rubric
 
 Score each dimension 1-5. Use evidence, not gut feel.

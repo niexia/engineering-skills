@@ -18,6 +18,7 @@ Keep the text short: the card is a summary, not the report.
   "verdict": "WATCH",
   "verdict_line": "Good business, fair price; wait for a better pitch.",
   "locale": "en",
+  "confidence": "B",
   "scores": {
     "business": 4,
     "moat": 3,
@@ -26,12 +27,12 @@ Keep the text short: the card is a summary, not the report.
     "risk": 3
   },
   "metrics": [
-    {"label": "P/E (2026E)", "value": "20-22x"},
-    {"label": "Dividend yield", "value": "1.8%"},
-    {"label": "Net cash", "value": "142亿"},
-    {"label": "Revenue growth", "value": "+23.8%"},
-    {"label": "Net margin", "value": "30.0%"},
-    {"label": "ROE (TTM)", "value": "71%"}
+    {"label": "P/E", "value": "20-22x", "period": "2026E"},
+    {"label": "Dividend yield", "value": "1.8%", "period": "FY25"},
+    {"label": "Net cash", "value": "142亿", "period": "1H26"},
+    {"label": "Revenue growth", "value": "+23.8%", "period": "1H26"},
+    {"label": "Net margin", "value": "30.0%", "period": "1H26"},
+    {"label": "ROE", "value": "71%", "period": "TTM"}
   ],
   "layers": [
     {"label": "Stable core", "text": "China offline: -5-10% in Q3; ~450 stores; 82m members."},
@@ -78,8 +79,9 @@ Keep the text short: the card is a summary, not the report.
 | `verdict` | yes | `BUY`, `WATCH` or `PASS`. |
 | `verdict_line` | yes | One sentence, <= 140 characters. |
 | `locale` | no | `en` (default) or `zh`. |
+| `confidence` | no | `A`, `B` or `C`; shown in the header. |
 | `scores` | yes | Five integers 1-5: business, moat, management, valuation, risk. |
-| `metrics` | yes | 1-6 items (4-6 preferred); label <= 18 chars, value <= 14 chars. |
+| `metrics` | yes | 1-6 items; each needs `label` (<=18), `value` (<=14) and `period` (<=8, e.g. FY25, 1H26, TTM, 2026E). |
 | `layers` | yes | Exactly 3 items; each text <= 90 chars. |
 | `bull` | yes | 1-3 items (2-3 preferred); each <= 80 chars. |
 | `bear` | yes | 1-3 items (2-3 preferred); each <= 80 chars. |
@@ -89,6 +91,10 @@ Keep the text short: the card is a summary, not the report.
 
 `locale: "zh"` switches the card's section labels to Chinese. The values can be
 in any language; a CJK font is required for Chinese glyphs.
+
+Every metric carries its own period. The card's as-of date is the analysis cutoff,
+not the period of each metric; do not leave a metric unlabeled and assume the
+header covers it.
 
 ## Rendering notes
 
