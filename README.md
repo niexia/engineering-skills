@@ -5,6 +5,38 @@
 [Authoring](docs/skill-authoring.md) ·
 [Source repositories](docs/source-repositories.md) · [Contributing](CONTRIBUTING.md)
 
+## Install
+
+The catalog links third-party skills; the installable pack contains the local
+skills under `skills/`. Installing this repository does not install the linked
+third-party skills.
+
+Any agent supported by the skills CLI:
+
+```bash
+npx skills add niexia/engineering-skills
+```
+
+Add `-g` to install for every project instead of the current one.
+
+Claude Code:
+
+```bash
+claude plugin marketplace add niexia/engineering-skills
+claude plugin install engineering-skills@workbench
+```
+
+Codex:
+
+```bash
+codex plugin marketplace add niexia/engineering-skills
+codex plugin add engineering-skills@workbench
+```
+
+`workbench` is the marketplace name declared in
+`.claude-plugin/marketplace.json`; it labels this source locally and is not a
+global registry name.
+
 ## Skill catalog
 
 - [Research and data analysis](#research)
@@ -224,6 +256,9 @@ catalog. The two authoring entries offer alternative approaches.
 ```text
 README.md
 README.zh-CN.md
+.claude-plugin/
+  marketplace.json          # Marketplace entry for Claude Code and Codex
+  plugin.json               # Plugin identity and the local skill list
 docs/
   skill-authoring.md        # Writing and evaluating skills
   source-repositories.md    # Sources and dated research records
@@ -248,6 +283,8 @@ AGENTS.md
 
 Categories live in this README. Every local skill has one folder directly under
 `skills/`, regardless of its category or whether it maintains the repository.
+The `skills` list in `.claude-plugin/plugin.json` mirrors these folders; update
+it when a local skill is added or removed.
 
 ## Using skills
 

@@ -1,0 +1,24 @@
+{
+  "name": "engineering-skills",
+  "version": "0.1.0",
+  "description": "Curated skills for engineers: research, planning, implementation, verification, reporting and library maintenance.",
+  "author": {
+    "name": "niexia",
+    "url": "https://github.com/niexia"
+  },
+  "homepage": "https://github.com/niexia/engineering-skills",
+  "repository": "https://github.com/niexia/engineering-skills",
+  "license": "MIT",
+  "keywords": [
+    "engineering",
+    "skills",
+    "workflow",
+    "research",
+    "reporting"
+  ],
+  "skills": [
+    "./skills/maintain-skill-library",
+    "./skills/value-investing-thesis",
+    "./skills/weekly-report-writing"
+  ]
+}

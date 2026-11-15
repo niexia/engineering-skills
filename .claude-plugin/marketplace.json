@@ -1,0 +1,24 @@
+{
+  "name": "workbench",
+  "owner": {
+    "name": "niexia",
+    "url": "https://github.com/niexia"
+  },
+  "description": "Skills for engineers, curated in work order.",
+  "plugins": [
+    {
+      "name": "engineering-skills",
+      "displayName": "Skills for Engineers",
+      "source": "./",
+      "description": "Curated skills for engineers: research, planning, implementation, verification, reporting and library maintenance.",
+      "category": "engineering",
+      "keywords": [
+        "engineering",
+        "skills",
+        "workflow",
+        "research",
+        "reporting"
+      ]
+    }
+  ]
+}

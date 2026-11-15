@@ -5,6 +5,36 @@
 [创作指南](docs/skill-authoring.md) · [来源仓库](docs/source-repositories.md) ·
 [贡献指南](CONTRIBUTING.md)
 
+## 安装
+
+目录中的第三方技能只是链接；本仓库可安装的内容是 `skills/` 下的本地技能。
+安装本仓库不会安装这些第三方技能。
+
+使用 skills CLI（支持 Claude Code、Codex、Cursor 等 Agent）：
+
+```bash
+npx skills add niexia/engineering-skills
+```
+
+加 `-g` 可安装到所有项目，而不是仅当前项目。
+
+Claude Code：
+
+```bash
+claude plugin marketplace add niexia/engineering-skills
+claude plugin install engineering-skills@workbench
+```
+
+Codex：
+
+```bash
+codex plugin marketplace add niexia/engineering-skills
+codex plugin add engineering-skills@workbench
+```
+
+`workbench` 是 `.claude-plugin/marketplace.json` 中声明的市场名，
+用于在本地标识这个来源，不是全局注册名。
+
 ## 技能目录
 
 - [研究与数据分析](#research)
@@ -218,6 +248,9 @@
 ```text
 README.md
 README.zh-CN.md
+.claude-plugin/
+  marketplace.json          # Claude Code 与 Codex 的市场条目
+  plugin.json               # 插件标识与本地技能列表
 docs/
   skill-authoring.md        # 技能编写与评估
   source-repositories.md    # 来源与历史研究记录
@@ -242,6 +275,8 @@ AGENTS.md
 
 分类在 README 中维护。每个本仓库技能直接放在 `skills/` 下，
 不因分类或维护用途建立额外层级。
+`.claude-plugin/plugin.json` 中的 `skills` 列表与这些目录保持一致；
+新增或删除本地技能时同步更新。
 
 ## 使用技能
 

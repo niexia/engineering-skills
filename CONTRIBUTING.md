@@ -38,6 +38,8 @@ scope in the skill's references.
 
 Personal workflows and repository maintenance skills share this flat root.
 Keep source folders independent of host installation paths.
+When adding or removing a local skill, update the `skills` list in
+`.claude-plugin/plugin.json`; keep the plugin name equal to the marketplace entry's name.
 Start with Draft status; use Evaluated only after actual Agent task evaluation.
 Any proposed adaptation must identify its source and applicable license; this
 library curates third-party references rather than copied skill definitions.

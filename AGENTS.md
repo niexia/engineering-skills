@@ -13,6 +13,8 @@
   Do not duplicate folders by category.
 - Keep personal workflows and repository maintenance skills in the same flat root.
   Keep all skill sources independent of host-specific hidden directories.
+- Keep the `skills` list in `.claude-plugin/plugin.json` aligned with the folders
+  under `skills/`; keep the plugin `name` equal to the marketplace entry's name.
 - Skill sources, templates and examples must contain no organization identifiers,
   private source URLs, real personnel or customers, internal project codes or data.
   Learn reusable writing patterns without saving private source documents here.
